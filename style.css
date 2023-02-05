@@ -6,15 +6,20 @@ body {
   display: grid;
   place-items: center;
 }
-
+.card-groups,
 .card-group,
 .card {
   aspect-ratio: 5/7;
 }
-
+.card-groups,
 .card-group,
 .big-card {
   width: 30vmin;
+}
+
+.card-group {
+  position: absolute;
+  transition: transform 400ms ease;
 }
 
 .big-card {
@@ -124,4 +129,53 @@ body {
 .lil-card:nth-child(7) {
   background-image: url('https://images.unsplash.com/photo-1675165309794-c28f5317a364?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
   background-size: cover;
+}
+
+.card-swiper-buttons {
+  margin-top: 8vmin;
+  display: flex;
+  justify-content: space-around;
+  padding: 0vmin 4vmin;
+}
+
+.card-swiper-buttons > button {
+  font-size: 2.5vmin;
+  border: 0.4vmin solid rgb(200, 200, 200);
+  border-radius: 100%;
+  color: white;
+  background-color: transparent;
+  height: 7vmin;
+  width: 7vmin;
+  cursor: pointer;
+}
+
+#love-button {
+  color: rgb(33, 150, 243);
+  border-color: rgb(33, 150, 243);
+}
+
+.card-group[data-status='unknown'] {
+  scale: 0;
+}
+
+.card-group[data-status='after'] {
+  transform: translate(50%) scale(0);
+}
+
+.card-group[data-status='becoming-active-from-before'] {
+  transform: translate(-50%) scale(0);
+  transition: none;
+}
+
+.card-group[data-status='active'] {
+  transition-delay: 300ms;
+}
+
+.card-group[data-status='before'] {
+  transform: translate(-50%) scale(0);
+}
+
+.card-group[data-status='becoming-active-from-after'] {
+  transform: translate(50%) scale(0);
+  transition: none;
 }
